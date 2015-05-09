@@ -73,14 +73,13 @@ public class ItemAdaptor extends BaseAdapter {
 
 		
 
-//		finalHolder.txtPlaceName.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				Intent i = new Intent(context,CommunityPageActivity.class);
-//				i.putExtra("wishid", rowItem.get("wishid").toString());
-//				context.startActivity(i);
-//			}
-//		});
+		finalHolder.txtPlaceName.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(context,DetailActivity.class);
+				context.startActivity(i);
+			}
+		});
 
 //		String imageUrl = " ";
 //		aq.id(R.id.ivWishImage)
