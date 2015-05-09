@@ -219,12 +219,6 @@ public class Common {
 		try {
 			m_li = new HashMap<String, Object>();
 			m_li.put("place_name", placeDetail.getString("place_name"));
-			m_li.put("description", "Some random description");
-//			m_li.put("description", placeDetail.getString("description"));
-			m_li.put("placeimages_set", placeDetail.getJSONArray("placeimages_set"));
-			m_li.put("privateplaceattributes", placeDetail.getJSONObject("privateplaceattributes"));
-			m_li.put("facilities", placeDetail.getJSONArray("facilities"));
-
 			m_li.put("latitude", placeDetail.getString("latitude"));
 			m_li.put("longitude", placeDetail.getString("longitude"));
 			m_li.put("street", placeDetail.getString("street"));
@@ -232,7 +226,28 @@ public class Common {
 			m_li.put("is_private", placeDetail.getString("is_private"));
 			m_li.put("locality", placeDetail.getString("locality"));
 
+			m_li.put("description", "Some random description");
+//			m_li.put("description", placeDetail.getString("description"));
 
+
+			if (null != placeDetail.getJSONArray("facilities")) {
+				m_li.put("facilities", placeDetail.getJSONArray("facilities"));
+			} else {
+				m_li.put("facilities", placeDetail.getJSONArray("facilities"));
+			}
+
+
+			if (null != placeDetail.getJSONArray("placeimages_set")){
+				m_li.put("placeimages_set", placeDetail.getJSONArray("placeimages_set"));
+			}else{
+				m_li.put("placeimages_set", null);
+			}
+
+			if (null != placeDetail.getJSONObject("privateplaceattributes")){
+				m_li.put("privateplaceattributes", placeDetail.getJSONObject("privateplaceattributes"));
+			}else{
+				m_li.put("privateplaceattributes", placeDetail.getJSONObject("privateplaceattributes"));
+			}
 
 			
 		} catch (JSONException e) {
