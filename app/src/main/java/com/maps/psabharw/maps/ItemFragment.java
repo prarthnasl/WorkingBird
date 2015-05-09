@@ -140,7 +140,7 @@ public class ItemFragment extends ListFragment implements AbsListView.OnScrollLi
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        public void onFragmentInteraction(String id);
+        void onFragmentInteraction(String id);
     }
 
 
@@ -173,11 +173,13 @@ public class ItemFragment extends ListFragment implements AbsListView.OnScrollLi
                         connection.getInputStream());
 
                 String jsonString = Common.readStream(in);
-                System.out.println(jsonString);
+
                 Common.cacheResponse(context,cachedName,jsonString);
 
                 jsonArray = Common.getArrayFromJsonString(jsonString, 0);
                 ArrayList<HashMap<String, Object>> placeList = Common.parseJson(jsonArray);
+
+                System.out.println(placeList);
 
                 return placeList;
 
@@ -224,10 +226,13 @@ public class ItemFragment extends ListFragment implements AbsListView.OnScrollLi
             }
 
             if (pageEnd > Constants.limit && stopDownPagination == false) {
+                Log.i(TAG,"Inside for N time ");
+                System.out.println(itemList);
                 itemAdapter.mData.addAll(itemList);
                 itemAdapter.notifyDataSetChanged();
             }else if(stopDownPagination == false){
                 Log.i(TAG,"Inside for first time ");
+                System.out.println(itemList);
                 itemAdapter = new ItemAdaptor(getActivity(),itemList);
                 setListAdapter(itemAdapter);
             }

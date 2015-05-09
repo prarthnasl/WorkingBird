@@ -60,7 +60,7 @@ public class Common {
 
 		try {
 			if (null != fileString && null != context) {
-				FileOutputStream fos = context.openFileOutput(filename,context.MODE_PRIVATE);
+				FileOutputStream fos = context.openFileOutput(filename, Context.MODE_PRIVATE);
 				fos.write(fileString.getBytes());
 				fos.close();
 			}
@@ -77,20 +77,14 @@ public class Common {
 	/* Checks if external storage is available for read and write */
 	public boolean isExternalStorageWritable() {
 		String state = Environment.getExternalStorageState();
-		if (Environment.MEDIA_MOUNTED.equals(state)) {
-			return true;
-		}
-		return false;
+		return Environment.MEDIA_MOUNTED.equals(state);
 	}
 
 	/* Checks if external storage is available to at least read */
 	public boolean isExternalStorageReadable() {
 		String state = Environment.getExternalStorageState();
-		if (Environment.MEDIA_MOUNTED.equals(state)
-				|| Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
-			return true;
-		}
-		return false;
+		return Environment.MEDIA_MOUNTED.equals(state)
+				|| Environment.MEDIA_MOUNTED_READ_ONLY.equals(state);
 	}
 
 	public static ArrayList<HashMap<String, Object>> parseJson(JSONArray jsonArray) {
@@ -107,7 +101,6 @@ public class Common {
 
 				JSONObject placeDetails = jsonArray.getJSONObject(i);
 				getHashofPlaceDetails(placeDetails);
-				m_li.put("tabNumber",3);
 				formList.add(m_li);
 
 			}
@@ -226,6 +219,20 @@ public class Common {
 		try {
 			m_li = new HashMap<String, Object>();
 			m_li.put("place_name", placeDetail.getString("place_name"));
+			m_li.put("description", "Some random description");
+//			m_li.put("description", placeDetail.getString("description"));
+			m_li.put("placeimages_set", placeDetail.getJSONArray("placeimages_set"));
+			m_li.put("privateplaceattributes", placeDetail.getJSONObject("privateplaceattributes"));
+			m_li.put("facilities", placeDetail.getJSONArray("facilities"));
+
+			m_li.put("latitude", placeDetail.getString("latitude"));
+			m_li.put("longitude", placeDetail.getString("longitude"));
+			m_li.put("street", placeDetail.getString("street"));
+			m_li.put("is_covered", placeDetail.getString("is_covered"));
+			m_li.put("is_private", placeDetail.getString("is_private"));
+			m_li.put("locality", placeDetail.getString("locality"));
+
+
 
 			
 		} catch (JSONException e) {

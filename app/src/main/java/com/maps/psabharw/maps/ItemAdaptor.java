@@ -19,6 +19,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androidquery.AQuery;
+import com.androidquery.callback.AjaxCallback;
+import com.androidquery.callback.AjaxStatus;
+
+
 public class ItemAdaptor extends BaseAdapter {
 
 	Context context;
@@ -27,13 +32,14 @@ public class ItemAdaptor extends BaseAdapter {
 	private String TAG = "wishAdapter";
 
 	public ArrayList<HashMap<String, Object>> mData;
-	
+	private AQuery listAq;
 
 	public ItemAdaptor(Context context, ArrayList<HashMap<String, Object>> arrayList) {
 
 		// TODO Auto-generated constructor stub
 		this.mData = arrayList;
 		this.context = context;
+		this.listAq = new AQuery(context);
 	}
 
 	/* private view holder class */
@@ -44,7 +50,7 @@ public class ItemAdaptor extends BaseAdapter {
 		ImageButton btn_addwish;
 		ImageButton btn_markdone;
 		TextView tvGesture;
-		TextView tvNotes;
+		TextView ivDescription;
 		
 	}
 
@@ -63,15 +69,20 @@ public class ItemAdaptor extends BaseAdapter {
 			holder = new ViewHolder();
 
 			holder.txtPlaceName = (TextView) convertView.findViewById(R.id.tvPlaceName);
+			holder.imageView = (ImageView) convertView.findViewById(R.id.ivPlaceImage);
+			holder.ivDescription = (TextView) convertView.findViewById(R.id.tvDescription);
 
 			convertView.setTag(holder);
 		} else
 			holder = (ViewHolder) convertView.getTag();
 
-		final ViewHolder finalHolder = holder;
-		holder.txtPlaceName.setText(Common.makeHashtagColor(rowItem.get("place_name").toString()));
 
-		
+
+		final ViewHolder finalHolder = holder;
+		holder.txtPlaceName.setText(rowItem.get("place_name").toString());
+//		holder.ivDescription.setText(rowItem.get("description").toString());
+
+		final AQuery aq = listAq.recycle(convertView);
 
 		finalHolder.txtPlaceName.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -81,11 +92,11 @@ public class ItemAdaptor extends BaseAdapter {
 			}
 		});
 
-//		String imageUrl = " ";
-//		aq.id(R.id.ivWishImage)
-//				.progress(R.id.img_progressbar)
-//				.image(imageUrl, true, true, 0, 0, null, 0,
-//						AQuery.RATIO_PRESERVE);
+		String imageUrl = " ";
+		aq.id(R.id.ivPlaceImage)
+				.progress(R.id.img_progressbar)
+				.image(imageUrl, true, true, 0, 0, null, 0,
+						AQuery.RATIO_PRESERVE);
 		return convertView;
 	}
 	

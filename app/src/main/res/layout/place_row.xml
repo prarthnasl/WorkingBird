@@ -25,6 +25,15 @@
             android:layout_centerVertical="true"
             android:minHeight="26dip" />
 
+        <ImageView
+            android:id="@+id/ivPlaceImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:clickable="false"
+            android:focusable="false"
+            android:src="@mipmap/img" />
+
     </RelativeLayout>
 
     <TextView
