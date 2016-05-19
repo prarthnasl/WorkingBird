@@ -26,7 +26,7 @@ public class DashboardActivity extends ActionBarActivity implements ItemFragment
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        // as you specify a parent activity in An.droidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement

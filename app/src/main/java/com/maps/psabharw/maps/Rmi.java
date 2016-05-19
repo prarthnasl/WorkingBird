@@ -132,16 +132,17 @@ public class Rmi {
 		
 		new Thread(new Runnable() {
 			   public void run() {
-				// TODO Auto-generated method stub
+
+				   String data = "";
+
+                   // TODO Auto-generated method stub
 					HttpURLConnection httpUrlConnection = null;
 
 					try {
 						httpUrlConnection = (HttpURLConnection) new URL(URL)
 								.openConnection();
-
 						InputStream in = new BufferedInputStream(
 								httpUrlConnection.getInputStream());
-						
 						data = readStream(in);
 						Log.i(TAG,"Respose from "+URL);
 						System.out.println(data);

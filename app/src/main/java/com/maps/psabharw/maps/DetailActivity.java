@@ -2,6 +2,7 @@ package com.maps.psabharw.maps;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.app.ActionBarActivity;
@@ -26,7 +27,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Gallery;
 import android.widget.ImageView;
-
+import android.widget.TextView;
 
 
 public class DetailActivity extends ActionBarActivity {
@@ -44,6 +45,7 @@ public class DetailActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
         picGallery = (Gallery) findViewById(R.id.gallery);
         picView=(ImageView)findViewById(R.id.picture);
         imgAdapt = new PicAdapter(this);

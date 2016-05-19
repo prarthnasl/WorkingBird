@@ -125,8 +125,8 @@ public class ItemAdaptor extends BaseAdapter {
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(context,DetailActivity.class);
-				context.startActivity(i);
-			}
+                context.startActivity(i);
+                }
 		});
 
 		String imageUrl = " ";
@@ -139,7 +139,7 @@ public class ItemAdaptor extends BaseAdapter {
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(context, DetailActivity.class);
-				context.startActivity(i);
+                context.startActivity(i);
 			}
 		});
 
